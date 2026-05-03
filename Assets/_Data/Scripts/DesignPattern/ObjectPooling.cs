@@ -22,7 +22,7 @@ public class Pool
 }
 public class ObjectPooling : Singleton<ObjectPooling>
 {
-
+    [SerializeField] string poolDataPath = "ScriptableObjects/PoolData";
 
     [Header("Pool Settings")]
     public List<Pool> pools = new List<Pool>();
@@ -45,7 +45,7 @@ public class ObjectPooling : Singleton<ObjectPooling>
 
     private void LoadPoolData()
     {
-        PoolData[] poolDataArray = Resources.LoadAll<PoolData>("ScriptableObjects/PoolData");
+        PoolData[] poolDataArray = Resources.LoadAll<PoolData>(poolDataPath);
         foreach (PoolData poolData in poolDataArray)
         {
             if (pools.Contains(poolData.pool))
